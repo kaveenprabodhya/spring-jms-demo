@@ -16,7 +16,7 @@ public class HelloMessageListener {
     public void listen(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders headers,
                        Message message){
-        System.out.println("I got a message");
-        System.out.println(helloWorldMessage);
+//        System.out.println("I got a message");
+//        System.out.println(helloWorldMessage);
     }
 }
