@@ -44,7 +44,7 @@ public class HelloSender {
                 Message helloMessage = null;
                 try {
                     helloMessage = session.createTextMessage(objectMapper.writeValueAsString(message));
-                    helloMessage.setStringProperty("_type", "co.spring.demojms.model.HelloWorldMessage");
+                    helloMessage.setStringProperty("_type", "com.spring.demojms.model.HelloWorldMessage");
                     System.out.println("Sending Hello");
                     return helloMessage;
                 } catch (JsonProcessingException e) {
