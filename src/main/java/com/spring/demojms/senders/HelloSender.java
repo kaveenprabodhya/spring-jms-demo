@@ -33,12 +33,12 @@ public class HelloSender {
     }
 
     @Scheduled(fixedRate = 2000)
-    public void sendAndReceivedMessage(){
+    public void sendAndReceivedMessage() throws JMSException {
         HelloWorldMessage message = HelloWorldMessage.builder()
                 .id(UUID.randomUUID())
                 .message("Hello")
                 .build();
-        jmsTemplate.sendAndReceive(JmsConfig.MY_SEND_RECEIVED_QUEUE, new MessageCreator() {
+        Message receiveMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_SEND_RECEIVED_QUEUE, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
                 Message helloMessage = null;
@@ -52,5 +52,6 @@ public class HelloSender {
                 }
             }
         });
+        System.out.println(receiveMsg.getBody(String.class));
     }
 }
